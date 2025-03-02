@@ -1,0 +1,30 @@
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Namet</th>
+      <th>Years</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each department.staffs}}
+      <tr>
+        <td>
+          {{role}}
+        </td>
+        <td>
+          {{name}}
+        </td>
+        <td>
+          {{years}}
+        </td>
+        <td>
+          <a href="/department/{{../department._id}}/deletestaff/{{_id}}" class="ui icon button">
+            <i class="fas fa-trash"></i>
+          </a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
