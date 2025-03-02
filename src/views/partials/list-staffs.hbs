@@ -1,0 +1,24 @@
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Name</th>
+      <th>Years here</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each department.staffs}}
+      <tr>
+        <td>
+          {{role}}
+        </td>
+        <td>
+          {{name}}
+        </td>
+        <td>
+          {{years}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
