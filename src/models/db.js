@@ -1,15 +1,23 @@
-import { userMemStore } from "./mem/user-mem-store.js";
-import { departmentMemStore } from "./mem/department-mem-store.js";
-import { staffMemStore } from "./mem/staff-mem-store.js";
+// import { userMemStore } from "./mem/user-mem-store.js";
+// import { departmentMemStore } from "./mem/department-mem-store.js";
+// import { staffMemStore } from "./mem/staff-mem-store.js";
+
+import { userJsonStore } from "./json/user-json-store.js";
+import { departmentJsonStore } from "./json/department-json-store.js";
+import { staffJsonStore } from "./json/staff-json-store.js";
+import { hospitalJsonStore } from "./json/hospital-json-store.js";
+
 
 export const db = {
+  hospitalStore: hospitalJsonStore,
   userStore: null,
   departmentStore: null,
   staffStore: null,
 
   init() {
-    this.userStore = userMemStore;
-    this.departmentStore = departmentMemStore;
-    this.staffStore = staffMemStore;
+    this.userStore = userJsonStore;
+    this.departmentStore = departmentJsonStore;
+    this.staffStore = staffJsonStore;
+    this.hospitalStore = hospitalJsonStore;
   },
 };

@@ -1,0 +1,89 @@
+{
+  "users": [
+    {
+      "firstName": "a",
+      "lastName": "a",
+      "email": "conor@mymail.com",
+      "password": "This1",
+      "_id": "acadba15-468d-41d7-8a84-d9ed104eafe2"
+    },
+    {
+      "firstName": "Conor",
+      "lastName": "Leonard",
+      "email": "conor@mymail.com",
+      "password": "This1",
+      "_id": "a7b93192-20d5-493b-9b66-55086e4d1eb5"
+    },
+    {
+      "firstName": "Big",
+      "lastName": "Fella",
+      "email": "Thisismyemail@email.com",
+      "password": "This1",
+      "_id": "92f516fe-67fe-4ec3-95ea-a2b8d13e71be"
+    },
+    {
+      "firstName": "asdf",
+      "lastName": "asdf",
+      "email": "conor@mymail.com",
+      "password": "This1",
+      "_id": "14e9c0fd-b670-4432-a65f-fa07eaa6a790"
+    }
+  ],
+  "departments": [
+    {
+      "userid": "acadba15-468d-41d7-8a84-d9ed104eafe2",
+      "title": "asdf",
+      "_id": "4784376f-e407-4ee4-a662-4fc996c10791"
+    },
+    {
+      "userid": "acadba15-468d-41d7-8a84-d9ed104eafe2",
+      "title": "asdf",
+      "_id": "8a2811fb-1289-4cac-89e4-75585cce1e2a"
+    },
+    {
+      "userid": "acadba15-468d-41d7-8a84-d9ed104eafe2",
+      "title": "Mydepart",
+      "_id": "d8c74f48-1650-492d-8bf4-275c1ece77d8"
+    }
+  ],
+  "staffs": [
+    {
+      "role": "asda",
+      "name": "asfd",
+      "years": "asf",
+      "_id": "c6e53b53-6e12-419c-9790-af49fd3a5503",
+      "departmentid": "4784376f-e407-4ee4-a662-4fc996c10791"
+    },
+    {
+      "role": "1234",
+      "name": "cnoor",
+      "years": "asd",
+      "_id": "32259ba1-e339-49f9-8bf7-b6f95e691cc0",
+      "departmentid": "4784376f-e407-4ee4-a662-4fc996c10791"
+    },
+    {
+      "role": "",
+      "name": "",
+      "years": "",
+      "_id": "f458d163-3b5a-46aa-97ab-5de7f50d71c7",
+      "departmentid": "4784376f-e407-4ee4-a662-4fc996c10791"
+    },
+    {
+      "role": "asS",
+      "name": "saa",
+      "years": "asas",
+      "_id": "66cd42b7-424a-4b7c-827b-04dcc87f6cd5",
+      "departmentid": "d8c74f48-1650-492d-8bf4-275c1ece77d8"
+    }
+  ],
+  "hospitals": [
+    {
+      "userid": "acadba15-468d-41d7-8a84-d9ed104eafe2",
+      "name": "UHC"
+    },
+    {
+      "userid": "acadba15-468d-41d7-8a84-d9ed104eafe2",
+      "name": "Mullingar"
+    }
+  ]
+}
