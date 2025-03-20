@@ -32,6 +32,12 @@
       "name": "asdasd",
       "type": "National",
       "_id": "70046609-a2d8-4174-ac4e-bc6fa037ce44"
+    },
+    {
+      "userid": "a398a0c2-e7eb-47d5-8a5f-1bb29ac80135",
+      "name": "Bantry",
+      "type": "Local",
+      "_id": "fbbd9b90-c4a0-47dd-886f-07eb18bf7161"
     }
   ],
   "departments": [
@@ -44,7 +50,32 @@
       "_id": "0881544b-a885-40a1-bac7-ab31345713db",
       "hospitalId": "70046609-a2d8-4174-ac4e-bc6fa037ce44",
       "title": "Stroke"
+    },
+    {
+      "hospitalId": "fbbd9b90-c4a0-47dd-886f-07eb18bf7161",
+      "title": "Older Persons",
+      "_id": "cc3bef03-6b54-4dba-9fd9-617f8bf51092"
+    },
+    {
+      "hospitalId": "fbbd9b90-c4a0-47dd-886f-07eb18bf7161",
+      "title": "Day Care",
+      "_id": "5c730a93-2d19-47dc-8207-14e1af6682f8"
     }
   ],
-  "staff": []
+  "staff": [
+    {
+      "role": "asdfa",
+      "name": "asdas",
+      "years": "23",
+      "departmentid": "cc3bef03-6b54-4dba-9fd9-617f8bf51092",
+      "_id": "aa0b4fc2-325f-4744-8259-914ea87e1447"
+    },
+    {
+      "role": "eqwqwe",
+      "name": "qweqw",
+      "years": "234234",
+      "departmentid": "cc3bef03-6b54-4dba-9fd9-617f8bf51092",
+      "_id": "44a76c9b-c08a-4e27-bd54-56e86b3fa133"
+    }
+  ]
 }

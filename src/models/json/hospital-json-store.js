@@ -6,7 +6,7 @@ import { departmentJsonStore } from "./department-json-store.js";
 export const hospitalJsonStore = {
   async getAllHospitals() {
     await db.read();
-    return db.data.hospitals;
+    return db.data.hospitals || []; // ✅ Ensure hospitals array exists
   },
 
   async addHospital(hospital) {
@@ -15,13 +15,13 @@ export const hospitalJsonStore = {
     hospital._id = v4();  // ✅ Generate a unique ID
 
     if (!hospital.userid) {
-        throw new Error("Missing userid in addHospital()");  // ✅ Prevent adding hospitals without a valid user ID
+      throw new Error("Missing userid in addHospital()");  // ✅ Prevent adding hospitals without a valid user ID
     }
 
     db.data.hospitals.push(hospital);
     await db.write();  // ✅ Save changes
     return hospital;  // ✅ Return hospital for confirmation
-},
+  },
 
   async getHospitalById(id) {
     await db.read();
@@ -31,9 +31,9 @@ export const hospitalJsonStore = {
       hospital.type = hospital.type || "Other";  // ✅ Ensure type always exists (Default: Other)
       hospital.departments = await departmentJsonStore.getDepartmentsByHospitalId(id) || [];
 
-      // ✅ Fetch staff for each department
+      // ✅ Fetch staff for each department (Fix: Correct function name)
       for (let dept of hospital.departments) {
-        dept.staffs = await staffJsonStore.getStaffsByDepartmentId(dept._id) || [];
+        dept.staff = await staffJsonStore.getStaffByDepartmentId(dept._id) || []; // ✅ FIXED HERE
       }
     }
 
@@ -48,8 +48,10 @@ export const hospitalJsonStore = {
   async deleteHospitalById(id) {
     await db.read();
     const index = db.data.hospitals.findIndex((hospital) => hospital._id === id);
-    db.data.hospitals.splice(index, 1);
-    await db.write();
+    if (index !== -1) {
+      db.data.hospitals.splice(index, 1);
+      await db.write();
+    }
   },
 
   async deleteAllHospitals() {

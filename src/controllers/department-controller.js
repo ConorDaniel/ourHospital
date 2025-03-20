@@ -32,24 +32,28 @@ export const departmentController = {
       payload: DepartmentSpec,  // ✅ Validate department input
       options: { abortEarly: false },
       failAction: function (request, h, error) {
-        return h.view("hospital-view", { title: "Add department error", errors: error.details })
-          .takeover()
-          .code(400);
+        console.log("Validation Error:", error.details);  // 🔍 Debug validation issues
+        return h.view("hospital-view", { 
+          title: "Add department error", 
+          errors: error.details 
+        }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
+      console.log("Params received:", request.params); // 🔍 Debug hospitalId
       const hospital = await db.hospitalStore.getHospitalById(request.params.hospitalId);
+      
       if (!hospital) {
         return h.response("Hospital not found").code(404);
       }
-
+  
       const newDepartment = {
-        _id: v4(),
-        hospitalId: hospital._id,
+        hospitalId: hospital._id,  // ✅ No need to set _id manually
         title: request.payload.title,  
       };
-
+  
       await db.departmentStore.addDepartment(newDepartment);
+      console.log("New department added:", newDepartment); // 🔍 Debug added department
       return h.redirect(`/hospital/${hospital._id}`);
     },
   },

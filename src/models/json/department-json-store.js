@@ -23,7 +23,7 @@ export const departmentJsonStore = {
 
     if (!department) return null; 
 
-    department.staffs = await staffJsonStore.getStaffsByDepartmentId(department._id) || [];
+    department.staff = await staffJsonStore.getStaffByDepartmentId(department._id) || [];
     return department;
 },
 
