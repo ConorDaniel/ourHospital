@@ -1,15 +1,24 @@
-{{#each hospitals}}
-  <div class="box box-link-hover-shadow">
-    <h2 class="title">
-      {{name}}
-    </h2>
-    <a href="/hospital/{{_id}}" class="button">
-      <span class="icon is-small">
-        <i class="fas fa-folder-open"></i>
-      </span>
-    </a>
-    <a href="/dashboard/deletehospital/{{_id}}" class="button">
-      <i class="fas fa-trash"></i>
-    </a>
-  </div>
-{{/each}}
+  {{#if hospitals.length}}
+  {{#each hospitals}}
+    <div class="box box-link-hover-shadow">
+      <h2 class="title">
+        {{name}}
+      </h2>
+      <p><strong>Type:</strong> {{type}}</p>  <!-- ✅ Display hospital type -->
+
+      <a href="/hospital/{{_id}}" class="button">
+        <span class="icon is-small">
+          <i class="fas fa-folder-open"></i>
+        </span>
+      </a>
+      <a href="/dashboard/deletehospital/{{_id}}" class="button">
+        <i class="fas fa-trash"></i>
+      </a>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No hospitals found.</p>  <!-- ✅ Correctly placed ELSE condition -->
+{{/if}}
+
+
+

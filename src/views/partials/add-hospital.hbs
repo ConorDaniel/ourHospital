@@ -1,7 +1,37 @@
 <form action="/dashboard/addhospital" method="POST">
-  <div class="field">
-    <label class="label">Hospital Name</label>
-    <input class="input" type="text" placeholder="Enter hospital name" name="name">
+  <div class="field is-horizontal">
+    <!-- Hospital Name Field -->
+    <div class="field-body">
+      <div class="field">
+        <label class="label">Hospital Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Enter hospital name" name="name" required>
+        </div>
+      </div>
+
+      <!-- Type Dropdown -->
+      <div class="field">
+        <label class="label">Type</label>
+        <div class="control">
+          <div class="select">
+            <select name="type" required>
+              <option value="" disabled selected>Select Type</option>
+              <option value="National">National</option>
+              <option value="Regional">Regional</option>
+              <option value="Local">Local</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <button class="button is-link">Add Hospital</button>
+
+  <!-- Submit Button -->
+  <div class="field">
+    <div class="control">
+      <button class="button is-link">Add Hospital</button>
+    </div>
+  </div>
 </form>
+

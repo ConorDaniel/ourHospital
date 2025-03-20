@@ -1,15 +1,15 @@
-<form class="box" action="/department/{{department._id}}/addstaff" method="POST">
+<form class="box" action="/hospital/{{hospital._id}}/department/{{department._id}}/addstaff" method="POST">
   <label>Enter Staff Member Details:</label>
   <div class="field is-horizontal">
     <div class="field-body">
       <div class="field">
-        <input class="input" type="text" placeholder="Enter Role" name="role">
+        <input class="input" type="text" placeholder="Enter Role" name="role" required>
       </div>
       <div class="field">
-        <input class="input" type="text" placeholder="Enter Name" name="name">
+        <input class="input" type="text" placeholder="Enter Name" name="name" required>
       </div>
       <div class="field">
-        <input class="input" type="text" placeholder="Enter Years here" name="years">
+        <input class="input" type="number" placeholder="Enter Years here" name="years" min="0" required>
       </div>
     </div>
   </div>

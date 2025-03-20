@@ -14,7 +14,7 @@ export const webRoutes = [
 
   { method: "GET", path: "/about", config: aboutController.index },
 
-  // Dashboard (Hospitals)
+  // Dashboard (List Hospitals)
   { method: "GET", path: "/dashboard", config: dashboardController.index },
   { method: "POST", path: "/dashboard/addhospital", config: dashboardController.addHospital },
   { method: "GET", path: "/dashboard/deletehospital/{id}", config: dashboardController.deleteHospital },
@@ -22,10 +22,12 @@ export const webRoutes = [
   // Hospital View (Departments inside a hospital)
   { method: "GET", path: "/hospital/{id}", config: hospitalController.index },
 
-  // Departments inside a hospital
-  { method: "GET", path: "/department/{id}", config: departmentController.index },
-  { method: "POST", path: "/department/{id}/addstaff", config: departmentController.addStaff },
-  
-  { method: "GET", path: "/dashboard/deletedepartment/{id}", config: dashboardController.deleteDepartment },
-  { method: "GET", path: "/department/{id}/deletestaff/{staffid}", config: departmentController.deleteStaff },
+  // Departments inside a Hospital (Fixed URL Structure)
+  { method: "GET", path: "/hospital/{hospitalId}/department/{id}", config: departmentController.index },  // ✅ Now departments are inside hospitals
+  { method: "POST", path: "/hospital/{hospitalId}/department/add", config: departmentController.addDepartment },  // ✅ Add department inside hospital
+  { method: "GET", path: "/hospital/{hospitalId}/department/{id}/delete", config: departmentController.deleteDepartment },  // ✅ Delete department inside hospital
+
+  // Staff inside a Department
+  { method: "POST", path: "/hospital/{hospitalId}/department/{id}/addstaff", config: departmentController.addStaff },
+  { method: "GET", path: "/hospital/{hospitalId}/department/{id}/deletestaff/{staffid}", config: departmentController.deleteStaff },
 ];

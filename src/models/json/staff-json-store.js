@@ -7,6 +7,11 @@ export const staffJsonStore = {
     return db.data.staffs;
   },
 
+  async getStaffsByHospitalId(hospitalId) {
+    await db.read();
+    return db.data.staffs.filter((staff) => staff.hospitalId === hospitalId);
+  },
+  
   async addStaff(departmentId, staff) {
     await db.read();
     staff._id = v4();
@@ -39,9 +44,9 @@ export const staffJsonStore = {
   },
 
   async updateStaff(staff, updatedStaff) {
-    staff.title = updatedStaff.role;
-    staff.artist = updatedStaff.name;
-    staff.duration = updatedStaff.years;
+    staff.role = updatedStaff.role;
+    staff.name = updatedStaff.name;
+    staff.years = updatedStaff.years;
     await db.write();
   },
 };

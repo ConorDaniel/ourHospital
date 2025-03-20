@@ -21,3 +21,9 @@ export const StaffSpec = {
 export const DepartmentSpec = {
   title: Joi.string().required(),
 };
+
+export const HospitalSpec = {
+  name: Joi.string().min(1).required(),
+  type: Joi.string().min(1).required(),
+};
+

@@ -10,18 +10,22 @@ export const departmentJsonStore = {
 
   async addDepartment(department) {
     await db.read();
+    db.data.departments = db.data.departments || [];  // ✅ Ensure departments array exists
     department._id = v4();
     db.data.departments.push(department);
     await db.write();
     return department;
-  },
+},
 
   async getDepartmentById(id) {
     await db.read();
-    const list = db.data.departments.find((department) => department._id === id);
-    list.staffs = await staffJsonStore.getStaffsByDepartmentId(list._id);
-    return list;
-  },
+    const department = db.data.departments.find((d) => String(d._id) === String(id)) || null;
+
+    if (!department) return null; 
+
+    department.staffs = await staffJsonStore.getStaffsByDepartmentId(department._id) || [];
+    return department;
+},
 
   async getUserDepartments(userid) {
     await db.read();
@@ -39,4 +43,9 @@ export const departmentJsonStore = {
     db.data.departments = [];
     await db.write();
   },
+
+  async getDepartmentsByHospitalId(hospitalId) {
+    await db.read();
+    return db.data.departments.filter((d) => d.hospitalId === hospitalId);
+  }
 };

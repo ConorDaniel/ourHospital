@@ -5,11 +5,17 @@ export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
+      if (!loggedInUser) {
+        return h.redirect("/login");
+      }
+  
+      // ✅ Only fetch hospitals that belong to the logged-in user
       const hospitals = await db.hospitalStore.getUserHospitals(loggedInUser._id);
+  
       const viewData = {
         title: "Hospital Dashboard",
         user: loggedInUser,
-        hospitals: hospitals,
+        hospitals: hospitals,  // ✅ Now only contains hospitals for this user
       };
       return h.view("dashboard-view", viewData);
     },
@@ -19,6 +25,7 @@ export const dashboardController = {
     validate: {
       payload: {
         name: Joi.string().min(1).required(),
+        type: Joi.string().optional(),  
       },
       options: { abortEarly: false },
       failAction: function (request, h, error) {
@@ -28,14 +35,25 @@ export const dashboardController = {
       },
     },
     handler: async function (request, h) {
-      const loggedInUser = request.auth.credentials;
+      const loggedInUser = request.auth.credentials;  // ✅ Ensure logged-in user exists
+      console.log("Logged-in user:", loggedInUser);  // 🔴 DEBUG: Check if user is retrieved
+      
+      if (!loggedInUser || !loggedInUser._id) {
+        console.log("User session missing! Redirecting to login...");
+        return h.redirect("/login");  // ✅ Prevents adding hospitals without a user ID
+      }
+    
       const newHospital = {
-        userid: loggedInUser._id,
+        userid: loggedInUser._id,  // ✅ Assign the correct user ID
         name: request.payload.name,
+        type: request.payload.type || "",  
       };
+    
+      console.log("New hospital data:", newHospital);  // 🔴 DEBUG: Check what is being saved
+    
       await db.hospitalStore.addHospital(newHospital);
       return h.redirect("/dashboard");
-    },
+    }
   },
 
   deleteHospital: {
@@ -44,6 +62,7 @@ export const dashboardController = {
       return h.redirect("/dashboard");
     },
   },
+
   deleteDepartment: {
     handler: async function (request, h) {
       await db.departmentStore.deleteDepartmentById(request.params.id);

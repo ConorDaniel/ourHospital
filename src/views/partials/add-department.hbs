@@ -1,6 +1,7 @@
-<form action="/dashboard/adddepartment" method="POST">
+<form action="/hospital/{{hospital_id}}/department/add" method="POST">
   <div class="field">
-    <label class="label">Department Title</label> <input class="input" type="text" placeholder="Enter department title" name="title">
+    <label class="label">Department Title</label>
+    <input class="input" type="text" placeholder="Enter department title" name="title" required>
   </div>
   <button class="button is-link">Add Department</button>
 </form>
