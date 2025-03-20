@@ -1,4 +1,3 @@
-changed structure from department and staff, to hospital, department, staff
+changed structure and now all appears to be working - user has session in which they can list a hospital, department and staff.  Multiple console.logs still to be tidied up.
 
-Working on the hbs - gettig some 404's
-
+Now proceding to add the additional scaffolding outlined by Eamonn
