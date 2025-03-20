@@ -1,24 +1,36 @@
-  {{#if hospitals.length}}
+{{#if hospitals.length}}
   {{#each hospitals}}
-    <div class="box box-link-hover-shadow">
-      <h2 class="title">
-        {{name}}
-      </h2>
-      <p><strong>Type:</strong> {{type}}</p>  <!-- ✅ Display hospital type -->
+    <div class="box">
+      <article class="media">
+        <!-- Hospital Info -->
+        <div class="media-content">
+          <div class="content">
+            <h2 class="title is-4">{{name}}</h2>
+            <p><strong>Type:</strong> {{type}}</p>  <!-- ✅ Display hospital type -->
+          </div>
+          <div class="buttons">
+            <a href="/hospital/{{_id}}" class="button is-info">
+              <span class="icon is-small">
+                <i class="fas fa-folder-open"></i>
+              </span>
+              <span>View Departments</span>
+            </a>
+            <a href="/dashboard/deletehospital/{{_id}}" class="button is-danger">
+              <i class="fas fa-trash"></i>
+              <span>Delete</span>
+            </a>
+          </div>
+        </div>
 
-      <a href="/hospital/{{_id}}" class="button">
-        <span class="icon is-small">
-          <i class="fas fa-folder-open"></i>
-        </span>
-      </a>
-      <a href="/dashboard/deletehospital/{{_id}}" class="button">
-        <i class="fas fa-trash"></i>
-      </a>
+        <!-- Hospital Image (Aligned Right) -->
+        <div class="media-right">
+          <figure class="image is-96x96">
+            <img src="/images/hospital-placeholder.jpg" alt="Hospital Image">
+          </figure>
+        </div>
+      </article>
     </div>
   {{/each}}
 {{else}}
   <p>No hospitals found.</p>  <!-- ✅ Correctly placed ELSE condition -->
 {{/if}}
-
-
-

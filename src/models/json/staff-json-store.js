@@ -50,7 +50,7 @@ export const staffJsonStore = {
   async updateStaff(staff, updatedStaff) {
     staff.role = updatedStaff.role;
     staff.name = updatedStaff.name;
-    staff.years = updatedStaff.years;
+    staff.vignette = updatedStaff.vignette;
     await db.write();
   },
 };

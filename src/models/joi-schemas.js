@@ -15,7 +15,7 @@ export const UserCredentialsSpec = {
 export const StaffSpec = {
   role: Joi.string().required(),
   name: Joi.string().required(),
-  years: Joi.string().required(),
+  vignette: Joi.string().required(),
 };
 
 export const DepartmentSpec = {

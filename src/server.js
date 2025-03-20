@@ -10,19 +10,14 @@ import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const result = dotenv.config();
 if (result.error) {
-  console.log(result.error.message);
+  console.error("Dotenv error:", result.error.message); // ✅ Better error handling
   process.exit(1);
 }
-
-
-
-let test = 1;
 
 async function init() {
   const server = Hapi.server({
@@ -59,11 +54,11 @@ async function init() {
   db.init();
   server.route(webRoutes);
   await server.start();
-  console.log("Server running on %s", server.info.uri);
+  console.log("Server running on %s", server.info.uri); // ✅ Keep this for confirmation
 }
 
 process.on("unhandledRejection", (err) => {
-  console.log(err);
+  console.error("Unhandled rejection:", err); // ✅ Better error logging
   process.exit(1);
 });
 

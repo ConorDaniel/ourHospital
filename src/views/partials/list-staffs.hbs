@@ -2,26 +2,31 @@
   <thead>
     <tr>
       <th>Role</th>
-      <th>Namet</th>
-      <th>Years</th>
-      <th></th>
+      <th>Name</th>
+      <th class="is-half">Vignette</th>  <!-- ✅ Twice the width -->
+      <th>Photo</th>  <!-- ✅ Staff Image Column -->
+      <th></th>  <!-- Empty column for delete button -->
     </tr>
   </thead>
   <tbody>
     {{#each staff}}
       <tr>
+        <!-- Staff Info -->
+        <td>{{role}}</td>
+        <td>{{name}}</td>
+        <td class="is-half">{{vignette}}</td>  <!-- ✅ Vignette now takes more space -->
+
+        <!-- Staff Image (Aligned Right) -->
         <td>
-          {{role}}
+          <figure class="image is-48x48">
+            <img src="/images/staff-placeholder.jpg" alt="Staff Photo" class="is-rounded">
+          </figure>
         </td>
+
+        <!-- Smaller Delete Button (Fix: Ensure correct nesting) -->
         <td>
-          {{name}}
-        </td>
-        <td>
-          {{years}}
-        </td>
-        <td>
-          <a href="/hospital/{{../hospital._id}}/department/{{../department._id}}/deletestaff/{{_id}}" class="ui icon button">
-            <i class="fas fa-trash"></i>
+          <a href="/hospital/{{../hospital._id}}/department/{{../department._id}}/deletestaff/{{_id}}" class="button is-danger is-small is-light">
+            <i class="fas fa-trash"></i>  <!-- ✅ Removed unnecessary spans -->
           </a>
         </td>
       </tr>

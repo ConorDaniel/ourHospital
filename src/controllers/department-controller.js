@@ -80,7 +80,7 @@ export const departmentController = {
       const newStaff = {
         role: request.payload.role,
         name: request.payload.name,
-        years: request.payload.years,
+        vignette: request.payload.vignette,
         departmentid: department._id,
       };
 
