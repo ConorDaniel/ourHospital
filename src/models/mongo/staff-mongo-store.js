@@ -1,24 +1,29 @@
-import { db } from "./connect.js"; // Ensure this connects to your MongoDB instance
+import mongoose from "mongoose";
+import { Staff } from "./staff.js";
 
 export const staffMongoStore = {
   async getAllStaff() {
-    return db.collection("staff").find().toArray();
+    return Staff.find().lean();
   },
 
   async getStaffById(id) {
-    return db.collection("staff").findOne({ _id: id });
+    return Staff.findById(new mongoose.Types.ObjectId(id)).lean();
+  },
+
+  async getStaffByDepartmentId(departmentId) {
+    return Staff.find({ departmentId: new mongoose.Types.ObjectId(departmentId) }).lean();
   },
 
   async addStaff(staff) {
-    const result = await db.collection("staff").insertOne(staff);
-    return result.insertedId;
+    const newStaff = new Staff(staff);
+    return newStaff.save();
   },
 
   async updateStaff(id, updatedStaff) {
-    return db.collection("staff").updateOne({ _id: id }, { $set: updatedStaff });
+    return Staff.findByIdAndUpdate(new mongoose.Types.ObjectId(id), updatedStaff, { new: true });
   },
 
   async deleteStaff(id) {
-    return db.collection("staff").deleteOne({ _id: id });
+    return Staff.findByIdAndDelete(new mongoose.Types.ObjectId(id));
   },
 };

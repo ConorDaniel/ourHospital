@@ -1,15 +1,24 @@
 {{#each departments}}
   <div class="box box-link-hover-shadow">
-    <h2 class="title">
-      {{title}}
-    </h2>
-    <a href="/department/{{_id}}" class="button">
-      <span class="icon is-small">
-        <i class="fas fa-folder-open"></i>
-      </span>
-    </a>
-     <a href="/dashboard/deletedepartment/{{_id}}" class="button">
-      <i class="fas fa-trash"></i>
-    </a>
+    <h2 class="title">{{title}}</h2>
+    
+    <div class="buttons">
+      <!-- Manage Staff Button -->
+      <a href="/hospital/{{../hospital._id}}/department/{{_id}}" class="button is-link is-light">
+        <span class="icon is-small">
+          <i class="fas fa-users"></i>
+        </span>
+        <span>Manage Staff</span>
+      </a>
+
+      <!-- Delete Department Button -->
+      <a href="/hospital/{{../hospital._id}}/department/{{_id}}/delete" class="button is-danger is-light is-small">
+        <span class="icon is-small">
+          <i class="fas fa-trash"></i>
+        </span>
+        <span>Delete</span>
+      </a>
+
+    </div>
   </div>
 {{/each}}

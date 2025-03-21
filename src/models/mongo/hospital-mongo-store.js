@@ -1,20 +1,25 @@
-import { db } from "./connect.js"; // Ensure this points to your MongoDB connection
+import mongoose from "mongoose";
+import { Hospital } from "./hospital.js";
 
 export const hospitalMongoStore = {
   async getAllHospitals() {
-    return db.collection("hospitals").find().toArray();
+    return Hospital.find().lean();
   },
 
   async getHospitalById(id) {
-    return db.collection("hospitals").findOne({ _id: id });
+    return Hospital.findById(new mongoose.Types.ObjectId(id)).lean();  // ✅ Fix: Use Mongoose findById
   },
 
   async addHospital(hospital) {
-    const result = await db.collection("hospitals").insertOne(hospital);
-    return result.insertedId;
+    const newHospital = new Hospital(hospital);
+    return newHospital.save();  // ✅ Fix: Use Mongoose Model save()
   },
 
-  async deleteHospital(id) {
-    return db.collection("hospitals").deleteOne({ _id: id });
+  async getUserHospitals(userId) {
+    return Hospital.find({ userId }).lean();
+  },
+
+  async deleteHospitalById(id) {  // ✅ Fix: Proper function name
+    return Hospital.deleteOne({ _id: new mongoose.Types.ObjectId(id) });  // ✅ Fix: Ensure ObjectId conversion
   },
 };

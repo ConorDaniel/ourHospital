@@ -5,15 +5,7 @@
   <h2 class="subtitle">Type: {{hospital.type}}</h2> 
 
   <h2 class="subtitle">Departments</h2>
-  {{#each departments}}
-    <div class="box">
-      <h3>{{this.title}}</h3>
-      <a href="/hospital/{{../hospital._id}}/department/{{this._id}}" class="button is-link">Manage Staff</a>
-    </div>
-  {{else}}
-    <p>No departments added yet.</p>
-  {{/each}}
-
+{{> list-departments departments=departments hospital=hospital }}
   <!-- Add Department Form -->
   {{> add-department hospital_id=hospital._id}}
 </section>

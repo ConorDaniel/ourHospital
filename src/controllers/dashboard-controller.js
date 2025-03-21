@@ -44,7 +44,7 @@ export const dashboardController = {
       }
     
       const newHospital = {
-        userid: loggedInUser._id,  // ✅ Assign the correct user ID
+        userId: loggedInUser._id,  // ✅ Assign the correct user ID
         name: request.payload.name,
         type: request.payload.type || "",  
       };

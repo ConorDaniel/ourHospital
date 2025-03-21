@@ -71,20 +71,20 @@ export const departmentController = {
       if (!department) {
         return h.response("Department not found").code(404);
       }
-
+    
       const hospital = await db.hospitalStore.getHospitalById(department.hospitalId);
       if (!hospital) {
         return h.response("Hospital not found").code(404);
       }
-
+    
       const newStaff = {
         role: request.payload.role,
         name: request.payload.name,
         vignette: request.payload.vignette,
-        departmentid: department._id,
+        departmentId: department._id,  // ✅ Corrected
       };
-
-      await db.staffStore.addStaff(department._id, newStaff);
+    
+      await db.staffStore.addStaff(newStaff);  // ✅ Only pass the object
       return h.redirect(`/hospital/${hospital._id}/department/${department._id}`);
     },
   },
