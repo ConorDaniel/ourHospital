@@ -9,8 +9,18 @@ export const OurHospitalService = {
     return res.data;
   },
 
+  async getUser(id) {
+    const res = await axios.get(`${this.baseUrl}/api/users/${id}`);
+    return res.data;
+  },
+
   async getUsers() {
     const res = await axios.get(`${this.baseUrl}/api/users`);
+    return res.data;
+  },
+
+  async deleteAllUsers() {
+    const res = await axios.delete(`${this.baseUrl}/api/users`);
     return res.data;
   },
 };
