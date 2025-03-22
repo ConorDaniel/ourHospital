@@ -30,4 +30,8 @@ export const webRoutes = [
   // Staff inside a Department
   { method: "POST", path: "/hospital/{hospitalId}/department/{id}/addstaff", config: departmentController.addStaff },
   { method: "GET", path: "/hospital/{hospitalId}/department/{id}/deletestaff/{staffid}", config: departmentController.deleteStaff },
+
+  { method: "GET", path: "/public/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
+
+
 ];
